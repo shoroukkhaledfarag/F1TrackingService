@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>pom</packaging>
+	<groupId>com.shoroukkhaled.co</groupId>
+	<artifactId>f1TeleManagement</artifactId>
+
+	<version>0.0.1-SNAPSHOT</version>
+	<name>f1TeleManagement</name>
+	<description>Spring boot project for F1 Telemetry Tracking and Management</description>
+
+	<modules>
+		<module>api-gateway</module>
+		<module>micro-services</module>
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.5.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
+		<java.version>17</java.version>
+
+		<spring-cloud.version>2020.0.6</spring-cloud.version>
+		<spring-boot.version>2.5.7</spring-boot.version>
+		<lombok.version>1.18.22</lombok.version>
+		<mapstruct.version>1.5.3.Final</mapstruct.version>
+		<app.version>0.1.0</app.version>
+		<log4j2.version>2.17.1</log4j2.version>
+		<logback.version>1.2.10</logback.version>
+		<deployment.folder>Deployment/IDP_${app.version}</deployment.folder>
+		<build.path.directory>${user.dir}/../${deployment.folder}</build.path.directory>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-parent</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<inherited>false</inherited>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${build.path.directory}</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

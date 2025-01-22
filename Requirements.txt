@@ -1,0 +1,4 @@
+Real-Time Car Positioning: Track the cars on a live map.
+Lap Time Tracking: Display lap times, sector times, and overall performance.
+Telemetry Monitoring: Show throttle, brake, speed, and tire information for each car.
+Driver Comparison: Side-by-side comparison of drivers’ times and telemetry.
