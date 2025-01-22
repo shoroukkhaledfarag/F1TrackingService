@@ -1,0 +1,47 @@
+# Constants
+APPLICATION_NAME: api-gateway
+APPLICATION_PORT: 8089
+ACTIVE_PROFILE: development
+
+# Hosting Configurations Section
+server:
+  port: ${APPLICATION_PORT}
+  servlet:
+    context-path: /api/gateway
+
+# Cloud Configuration
+spring:
+  application:
+    name: ${APPLICATION_NAME}
+  profiles:
+    active: ${ACTIVE_PROFILE}
+  gateway:
+    routes:
+      - id: car-management
+        predicates:
+          - Path=/car-management/**
+        uri: localhost:8010
+      - id: rule-engine
+        predicates:
+          - Path=/rule-engine/**
+        uri: localhost:8011
+      - id: telemetry-management
+        predicates:
+          - Path=/telemetry-management/**
+        uri: localhost:8012
+      - id: report-management
+        predicates:
+         - Path=/report-management/**
+        uri: localhost:8013
+      - id: data-service-management
+        predicates:
+         - Path=/data-service-management/**
+        uri: localhost:8014
+
+# Swagger
+springdoc:
+  api-docs:
+    enabled: true
+    path: ${server.servlet.context-path}/v3/api-docs
+  swagger-ui:
+    path: ${server.servlet.context-path}/swagger
